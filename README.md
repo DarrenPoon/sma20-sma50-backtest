@@ -292,7 +292,7 @@ moving-average-backtest/
 
 ├── README.md
 
-├── moving\_average\_backtest.ipynb
+├── sma20_sma50_backtest.ipynb
 
 ├── requirements.txt
 
