@@ -1,8 +1,8 @@
-\# SMA20/SMA50 Moving-Average Crossover Backtest
+# SMA20/SMA50 Moving-Average Crossover Backtest
 
 
 
-\## Project Overview
+## Project Overview
 
 
 
@@ -16,11 +16,11 @@ The strategy is tested on:
 
 
 
-\- AAPL
+- AAPL
 
-\- MSFT
+- MSFT
 
-\- NVDA
+- NVDA
 
 
 
@@ -28,7 +28,7 @@ The historical sample covers January 2016 through December 2025.
 
 
 
-\## Research Question
+## Research Question
 
 
 
@@ -40,41 +40,26 @@ costs?
 
 
 
-\## Strategy Rules
+## Strategy Rules
 
 
 
 The trading signal is:
 
-
-
-\\\[
-
-\\text{Signal}\_t =
-
-\\begin{cases}
-
-1, \& \\text{if } SMA20\_t > SMA50\_t \\\\
-
-0, \& \\text{otherwise}
-
-\\end{cases}
-
-\\]
-
-
+$$
+\text{Signal}_t =
+\begin{cases}
+1, & \text{if } \mathrm{SMA20}_t > \mathrm{SMA50}_t \\
+0, & \text{otherwise}
+\end{cases}
+$$
 
 To prevent look-ahead bias, the executable position uses the previous trading
-
 day's signal:
 
-
-
-\\\[
-
-\\text{Position}\_t = \\text{Signal}\_{t-1}
-
-\\]
+$$
+\text{Position}_t = \text{Signal}_{t-1}
+$$
 
 
 
@@ -82,17 +67,17 @@ The strategy is:
 
 
 
-\- Fully invested when `Position = 1`
+- Fully invested when `Position = 1`
 
-\- Fully in cash when `Position = 0`
+- Fully in cash when `Position = 0`
 
-\- Long-only
+- Long-only
 
-\- Charged a 0.1% transaction cost on every entry and exit
+- Charged a 0.1% transaction cost on every entry and exit
 
 
 
-\## Data
+## Data
 
 
 
@@ -103,18 +88,17 @@ Historical daily price data were downloaded from Stooq.
 The available fields include:
 
 
+- Date
 
-\- Date
+- Open
 
-\- Open
+- High
 
-\- High
+- Low
 
-\- Low
+- Close
 
-\- Close
-
-\- Volume
+- Volume
 
 
 
@@ -122,9 +106,23 @@ The analysis is treated as a price-return backtest because the downloaded files
 
 do not contain an explicit dividend or total-return field.
 
+## Key Visualizations
 
+### AAPL: Cumulative Growth
 
-\## Methodology
+The chart compares the growth of one dollar under the net SMA20/SMA50 strategy
+and the gross buy-and-hold benchmark.
+
+![AAPL cumulative growth](figures/aapl_cumulative_growth.png)
+
+### AAPL: Historical Drawdown
+
+The drawdown chart compares the peak-to-trough declines of the net SMA strategy
+and buy-and-hold.
+
+![AAPL drawdown](figures/aapl_drawdown.png)
+
+## Methodology
 
 
 
@@ -132,39 +130,39 @@ The project includes:
 
 
 
-\- Data loading and cleaning
+- Data loading and cleaning
 
-\- Data-quality validation
+- Data-quality validation
 
-\- Daily return calculations
+- Daily return calculations
 
-\- SMA20 and SMA50 calculations
+- SMA20 and SMA50 calculations
 
-\- Lagged signal execution
+- Lagged signal execution
 
-\- Entry and exit identification
+- Entry and exit identification
 
-\- Transaction-cost modelling
+- Transaction-cost modelling
 
-\- Cumulative-return analysis
+- Cumulative-return analysis
 
-\- Annualized return and volatility
+- Annualized return and volatility
 
-\- Sharpe ratio
+- Sharpe ratio
 
-\- Maximum drawdown
+- Maximum drawdown
 
-\- Market exposure
+- Market exposure
 
-\- Buy-and-hold comparison
+- Buy-and-hold comparison
 
-\- Chronological train-test evaluation
+- Chronological train-test evaluation
 
-\- Performance visualizations
+- Performance visualizations
 
 
 
-\## Main Findings
+## Main Findings
 
 
 
@@ -190,23 +188,17 @@ important upward price movements rather than by transaction costs alone.
 
 
 
-\## Full-Sample Results
-
-
+## Full-Sample Results
 
 | Asset | Net SMA Return | Gross Buy-and-Hold Return | Transactions |
-
 |---|---:|---:|---:|
-
 | AAPL | 289.13% | 1,044.34% | 57 |
-
 | MSFT | 212.61% | 900.50% | 52 |
-
 | NVDA | 4,529.72% | 23,512.02% | 48 |
 
 
 
-\## Out-of-Sample Evaluation
+## Out-of-Sample Evaluation
 
 
 
@@ -214,9 +206,9 @@ The dataset was divided chronologically into:
 
 
 
-\- Training period: 2016–2021
+- Training period: 2016–2021
 
-\- Testing period: 2022–2025
+- Testing period: 2022–2025
 
 
 
@@ -232,7 +224,7 @@ persist during testing.
 
 
 
-\## Conclusion
+## Conclusion
 
 
 
@@ -252,7 +244,7 @@ return, risk, and transaction costs.
 
 
 
-\## Limitations
+## Limitations
 
 
 
@@ -260,23 +252,23 @@ Important limitations include:
 
 
 
-\- Only three technology-oriented stocks were tested
+- Only three technology-oriented stocks were tested
 
-\- Cash returns were assumed to be zero
+- Cash returns were assumed to be zero
 
-\- Transaction costs were represented by a fixed 0.1% rate
+- Transaction costs were represented by a fixed 0.1% rate
 
-\- Buy-and-hold was reported as a gross benchmark
+- Buy-and-hold was reported as a gross benchmark
 
-\- Dividend treatment was not independently verified
+- Dividend treatment was not independently verified
 
-\- Execution was based on simplified daily close-to-close returns
+- Execution was based on simplified daily close-to-close returns
 
-\- A constant 4% annual risk-free rate was used
+- A constant 4% annual risk-free rate was used
 
-\- Only one chronological train-test split was evaluated
+- Only one chronological train-test split was evaluated
 
-\- Historical performance does not guarantee future results
+- Historical performance does not guarantee future results
 
 
 
