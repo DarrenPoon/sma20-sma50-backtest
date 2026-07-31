@@ -280,41 +280,34 @@ Important limitations include:
 
 
 
-\## Repository Structure
-
-
+## Repository Structure
 
 ```text
-
-moving-average-backtest/
-
+sma20-sma50-backtest/
 │
-
 ├── README.md
-
 ├── sma20_sma50_backtest.ipynb
-
 ├── requirements.txt
-
 ├── .gitignore
-
 │
-
 ├── data/
-
-│   ├── aapl\_us\_d.csv
-
-│   ├── msft\_us\_d.csv
-
-│   └── nvda\_us\_d.csv
-
+│   ├── aapl_us_d.csv
+│   ├── msft_us_d.csv
+│   └── nvda_us_d.csv
 │
-
 └── figures/
+    ├── aapl_cumulative_growth.png
+    ├── aapl_drawdown.png
+    ├── aapl_trading_signals.png
+    ├── msft_cumulative_growth.png
+    ├── msft_drawdown.png
+    ├── msft_trading_signals.png
+    ├── nvda_cumulative_growth.png
+    ├── nvda_drawdown.png
+    └── nvda_trading_signals.png
+```
 
-&#x20;   ├── aapl\_cumulative\_growth.png
 
-&#x20;   ├── aapl\_drawdown.png
 
-&#x20;   └── ...
+
 
